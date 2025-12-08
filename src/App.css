@@ -1,0 +1,56 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Remove the neon hover — replace with subtle warm shadow */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  transition: transform 250ms ease, filter 250ms ease;
+  will-change: transform;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 12px hsl(var(--border)));
+}
+
+/* Optional: espresso tint for React logo */
+.logo.react:hover {
+  filter: drop-shadow(0 6px 12px hsl(var(--primary)));
+}
+
+/* Clean, slow rotation (luxury-style) */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Keep spin only if allowed */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin 24s linear infinite;
+  }
+}
+
+/* Card now fits your warm minimal palette */
+.card {
+  padding: 2em;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px -6px rgba(0,0,0,0.06);
+}
+
+/* Muted text now uses your palette */
+.read-the-docs {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.9rem;
+}
