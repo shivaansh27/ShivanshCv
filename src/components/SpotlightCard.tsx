@@ -1,20 +1,20 @@
-import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 interface SpotlightCardProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const SpotlightCard = ({ children, className = '' }: SpotlightCardProps) => {
+const SpotlightCard = ({ children, className = "" }: SpotlightCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    setMousePosition({
+    setPos({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
@@ -23,36 +23,38 @@ const SpotlightCard = ({ children, className = '' }: SpotlightCardProps) => {
   return (
     <motion.div
       ref={ref}
-      className={`relative overflow-hidden ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ scale: 1.02, y: -5 }}
-      transition={{ duration: 0.3 }}
-      style={{
-        transformStyle: 'preserve-3d',
-      }}
+      onMouseMove={handleMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      whileHover={{ scale: 1.02, y: -4 }}   // ← clean hover, NO TILT
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className={`relative rounded-2xl overflow-hidden ${className}`}
+      style={{ transformStyle: "flat" }}     // ← IMPORTANT: removes tilt
     >
-      {/* Spotlight effect */}
+      {/* Spotlight Overlay */}
       <motion.div
-        className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
-        animate={{ opacity: isHovered ? 1 : 0 }}
+        className="pointer-events-none absolute inset-0 z-20"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.25 }}
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--accent) / 0.15), transparent 40%)`,
+          background: `radial-gradient(500px circle at ${pos.x}px ${pos.y}px, hsl(var(--accent) / 0.18), transparent 60%)`,
         }}
       />
-      
-      {/* Animated border gradient */}
+
+      {/* Glow Border Layer */}
       <motion.div
-        className="absolute inset-0 rounded-xl z-0"
-        animate={{ opacity: isHovered ? 1 : 0 }}
+        className="absolute inset-0 z-10 rounded-2xl"
+        animate={{ opacity: hovered ? 0.9 : 0 }}
+        transition={{ duration: 0.25 }}
         style={{
-          background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--accent) / 0.4), transparent 40%)`,
-          padding: '1px',
+          background: `radial-gradient(350px circle at ${pos.x}px ${pos.y}px, hsl(var(--accent) / 0.5), transparent 70%)`,
         }}
       />
-      
-      {children}
+
+      {/* MAIN CARD CONTENT (this prevents distortion) */}
+      <div className="relative z-30 rounded-2xl bg-card/70 backdrop-blur-xl border border-border/20 h-full">
+        {children}
+      </div>
     </motion.div>
   );
 };

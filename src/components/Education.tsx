@@ -52,8 +52,9 @@ const fadeInUp = (delay = 0) => ({
 
 const Education = () => {
   return (
-    <section id="education" className="py-24 px-6 relative">
-      <div className="absolute left-0 top-1/2 w-72 h-72 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+   <section id="education" className="py-24 px-6 relative">
+  <div className="absolute left-1/2 -translate-x-1/2 -top-10 w-44 h-44 bg-accent/10 rounded-full blur-[60px] pointer-events-none" />
+
 
       <div className="container mx-auto max-w-4xl relative">
         <motion.div {...fadeInUp(0)} className="text-center mb-16">

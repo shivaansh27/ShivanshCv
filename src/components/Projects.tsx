@@ -63,43 +63,60 @@ const ProjectCard = ({
       viewport={{ once: true }}
       className="group h-full"
     >
-      <SpotlightCard className="h-full">
-        <div className="bg-card/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/30 flex flex-col relative h-full">
-          
-          <div
-            className={`h-40 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative`}
-          >
-            <motion.div
-              className="relative z-10"
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img src={project.img} alt={project.title} className="h-full w-auto" />
-            </motion.div>
+     <SpotlightCard className="h-full min-h-[480px]">
+  <div className="bg-card/70 backdrop-blur-md rounded-2xl overflow-hidden border-none shadow-[0_0_20px_rgba(0,0,0,0.15)] flex flex-col relative h-full">
 
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card/80 to-transparent" />
+
+          {/* IMAGE SECTION — PERFECTLY BALANCED */}
+          <div className="h-32 w-full overflow-hidden bg-gradient-to-br from-accent/10 to-transparent relative">
+            <motion.img
+              src={project.img}
+              alt={project.title}
+              className="w-full h-full object-cover"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.25 }}
+            />
+
+           {/* subtle fade at bottom (clean + modern) */}
+<div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-card/25 to-transparent" />
+
           </div>
 
-          <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
+          {/* CONTENT SECTION — CENTERED + BALANCED */}
+          <div className="px-5 py-5 flex flex-col flex-1">
+            
+            {/* TITLE */}
+            <h3 className="text-lg font-semibold text-foreground mb-3">
               {project.title}
             </h3>
 
-            <p className="text-sm text-muted-foreground mb-5 flex-1 leading-relaxed">
+            {/* DESCRIPTION */}
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
               {project.description}
             </p>
 
+            {/* TAGS */}
             <div className="flex flex-wrap gap-2 mb-5">
               {project.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-xs bg-secondary/50 border-0">
+                <Badge
+                  key={tag}
+                  variant="secondary"
+                  className="text-xs bg-secondary/40 px-2 py-1 rounded-full border-0"
+                >
                   {tag}
                 </Badge>
               ))}
             </div>
 
-            <div className="flex gap-3">
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button asChild variant="outline" size="sm" className="gap-2 rounded-full">
+            {/* BUTTONS */}
+            <div className="mt-auto flex gap-3">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.96 }}>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="gap-2 rounded-full"
+                >
                   <a href={project.github} target="_blank">
                     <Github className="h-4 w-4" />
                     Code
@@ -108,8 +125,12 @@ const ProjectCard = ({
               </motion.div>
 
               {project.demo && (
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button asChild size="sm" className="gap-2 rounded-full">
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.96 }}>
+                  <Button
+                    asChild
+                    size="sm"
+                    className="gap-2 rounded-full"
+                  >
                     <a href={project.demo} target="_blank">
                       <ExternalLink className="h-4 w-4" />
                       Demo
@@ -118,12 +139,15 @@ const ProjectCard = ({
                 </motion.div>
               )}
             </div>
+
           </div>
         </div>
       </SpotlightCard>
     </motion.div>
   );
 };
+
+
 
 const Projects = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -150,6 +174,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-24 px-6 relative">
+
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/5 rounded-full blur-[100px]" />
 
       <div className="container mx-auto max-w-6xl relative">
@@ -177,7 +202,7 @@ const Projects = () => {
               {projectsData.map((project, i) => (
                 <div
                   key={i}
-                  className="flex-none w-[calc(100%-1rem)] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]"
+                  className="flex-none w-[calc(100%-1rem)] sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] flex justify-center items-center"
                 >
                   <ProjectCard project={project} index={i} />
                 </div>

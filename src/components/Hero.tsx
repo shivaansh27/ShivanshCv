@@ -29,9 +29,11 @@ const Hero = () => {
 
   return (
     <section
-      id="home"
-      className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 relative overflow-hidden"
-    >
+  id="home"
+  className="flex flex-col items-center justify-start px-6 pt-32 pb-60 relative overflow-hidden"
+
+>
+
       <FloatingCode />
 
       <motion.div
