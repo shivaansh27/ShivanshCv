@@ -104,7 +104,7 @@ const Contact = () => {
 
         <motion.footer className="pt-8">
           <motion.p className="text-sm text-muted-foreground" {...fadeUp(0.6)}>
-            © 2025 Shivansh Sharma. All rights reserved.
+            © 2026 Shivansh Sharma. All rights reserved.
           </motion.p>
 
           <motion.p className="text-xs text-muted-foreground/60 mt-3 italic" {...fadeUp(0.9)}>
