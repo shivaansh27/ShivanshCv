@@ -131,9 +131,13 @@ export function HeroSection() {
             className="font-serif text-7xl md:text-[10rem] leading-[0.85] tracking-tighter italic flex flex-wrap justify-center md:justify-start"
           >
             {letters.map((letter, index) => (
-              <motion.span variants={child} key={index}>
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
+              <React.Fragment key={index}>
+                {letter === " " ? (
+                  <span className="basis-full md:basis-auto">{"\u00A0"}</span>
+                ) : (
+                  <motion.span variants={child}>{letter}</motion.span>
+                )}
+              </React.Fragment>
             ))}
           </motion.h1>
           <motion.div 
