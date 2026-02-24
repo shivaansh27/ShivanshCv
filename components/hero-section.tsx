@@ -88,13 +88,13 @@ export function HeroSection() {
   };
 
   return (
-    <section 
+    <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden"
     >
       {/* Spotlight */}
-      <div 
+      <div
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
         style={{
           background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.03), transparent 40%)`,
@@ -102,7 +102,7 @@ export function HeroSection() {
       />
 
       {/* Animated Code Texture */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none overflow-hidden flex items-center justify-center"
         initial={{ y: 0 }}
         animate={{ y: "-50%" }}
@@ -114,7 +114,7 @@ export function HeroSection() {
       </motion.div>
 
       <motion.div style={{ y, opacity }} className="max-w-5xl w-full relative z-10">
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -122,9 +122,9 @@ export function HeroSection() {
         >
           Full Stack Web Developer | AI Enthusiast
         </motion.p>
-        
+
         <div className="relative inline-block mb-12 text-center md:text-left w-full">
-          <motion.h1 
+          <motion.h1
             variants={container}
             initial="hidden"
             animate="visible"
@@ -140,7 +140,7 @@ export function HeroSection() {
               </React.Fragment>
             ))}
           </motion.h1>
-          <motion.div 
+          <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1.5, delay: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -149,7 +149,7 @@ export function HeroSection() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-end gap-12">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
@@ -157,7 +157,7 @@ export function HeroSection() {
           >
             I build modern <span className="text-foreground italic">full stack web applications</span> with scalable APIs, polished user experiences, and practical <span className="text-foreground italic">AI-powered features</span>.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
@@ -172,7 +172,7 @@ export function HeroSection() {
           </motion.div>
         </div>
       </motion.div>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
