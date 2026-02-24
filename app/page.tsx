@@ -84,9 +84,6 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <MagneticButton className="text-xs font-mono border-thin border-foreground px-4 py-1.5 hover:bg-foreground hover:text-background transition-all">
-              <a href="#contact">HIRE ME</a>
-            </MagneticButton>
           </div>
         </div>
       </nav>
