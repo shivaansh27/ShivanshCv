@@ -6,18 +6,18 @@ import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const skills = [
-  { name: "Node.js", details: "Async Programming - REST APIs", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", projects: ["LoopIn", "Battle Arena"] },
-  { name: "Express.js", details: "Middleware - Routing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", projects: ["Flux Forms", "Battle Arena"] },
-  { name: "MongoDB", details: "Schema Design - Indexing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg", projects: ["Battle Arena"] },
-  { name: "TypeScript", details: "Strict typing - Scalable architecture", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", projects: ["General"] },
-  { name: "React.js", details: "Component-driven UI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", projects: ["LoopIn", "Flux Forms"] },
+  { name: "Node.js", details: "Async Programming - REST APIs", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", projects: ["LoopIn", "Battle Arena","Evalio"] },
+  { name: "Express.js", details: "Middleware - Routing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", projects: ["Flux Forms", "Battle Arena","Evalio"] },
+  { name: "MongoDB", details: "Schema Design - Indexing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg", projects: ["Battle Arena","Evalio"] },
+  { name: "TypeScript", details: "Strict typing - Scalable architecture", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", projects: ["General","Flux Form"] },
+  { name: "React.js", details: "Component-driven UI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", projects: ["LoopIn", "Flux Forms","Evalio"] },
   { name: "PostgreSQL", details: "Relational data - SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", projects: ["Flux Forms"] },
   { name: "Firebase", details: "WebSockets - Real-time", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg", projects: ["LoopIn"] },
-  { name: "Docker", details: "Containerization", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", projects: ["Flux Forms"] },
-  { name: "C++", details: "High performance - Systems", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", projects: ["General"] },
-  { name: "C#", details: ".NET Framework", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg", projects: ["General"] },
+  { name: "Docker", details: "Containerization", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", projects: ["Flux Forms","Evalio"] },
+  { name: "C++", details: "High performance - Systems", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", projects: ["General","DSA"] },
+  { name: "C#", details: ".NET Framework", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg", projects: ["General",".NET"] },
   { name: "Git", details: "Version Control - CI/CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", projects: ["General"] },
-  { name: "JWT & RBAC", details: "Authentication - Security", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg", projects: ["LoopIn", "Battle Arena"] },
+  { name: "JWT & RBAC", details: "Authentication - Security", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg", projects: ["LoopIn", "Battle Arena", "Evalio"] },
 ];
 
 export function SkillsSection() {
