@@ -47,6 +47,16 @@ const projects: Project[] = [
     githubUrl: "https://github.com/shivaansh27/Battle-Arena",
     liveUrl: "https://battlearena.onrender.com/",
   },
+  {
+    id: "evalio",
+    title: "Evalio - Ai Mock Interview Platform",
+    description: " AI-powered mock interview platform that generates personalized interview questions based on a user’s resume and target role",
+    image: "/Evalio.png",
+    tags: ["NODE.JS", "EXPRESS", "MONGODB", "REACT","JWT","OPENAI","DEEPGRAM"],
+    fullDescription: "Evalio is a full-stack mock interview platform that helps job seekers practice technical and behavioral interviews in a structured and realistic way. Users can upload their resume, select a target job role and experience level, and generate personalized interview sessions powered by AI. The platform supports voice-based responses and provides detailed performance reports with question-wise scoring, feedback insights, and interview history tracking. Built using React, Node.js, Express, and MongoDB, Evalio follows a clean Route → Controller → Service architecture with secure JWT-based authentication, Google OAuth integration, file validation, and rate-limited endpoints. The focus was on building a scalable backend, structured workflows, and practical AI integration within a real-world application.",
+    githubUrl: "https://github.com/shivaansh27/Evalio",
+    liveUrl: "https://evalio-interview.vercel.app/",
+  },
 ];
 
 function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
