@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shivansh Sharma | Backend & AI Engineer",
+  title: "Shivansh Sharma | Full Stack Developer & AI Enthusiast",
   description:
     "Backend & Platform Engineer building scalable APIs, real-time systems, and AI-powered applications using Node.js, TypeScript, and modern cloud architecture.",
   metadataBase: new URL("https://www.shivanshsharma.site"),
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Shivansh Sharma | Backend & AI Engineer",
+    title: "Shivansh Sharma | Full Stack Developer & AI Enthusiast",
     description:
       "Backend & Platform Engineer building scalable APIs, real-time systems, and AI-powered applications.",
     url: "https://www.shivanshsharma.site",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shivansh Sharma | Backend & AI Engineer",
+    title: "Shivansh Sharma | Full Stack Developer & AI Enthusiast",
     description:
-      "Backend & AI Engineer building scalable systems and intelligent applications.",
+      "Full Stack & AI Engineer building scalable systems and intelligent applications.",
     images: ["/og-image.svg"],
   },
   viewport: "width=device-width, initial-scale=1",

@@ -28,6 +28,16 @@ const projects: Project[] = [
     liveUrl: "https://evalio-interview.vercel.app/",
   },
   {
+  id: "automation",
+  title: "Ecommerce Hybrid Automation Framework",
+  description: "Hybrid QA automation framework combining UI (Selenium) and API (RestSharp) testing for end-to-end validation",
+  image: "/automation.png",
+  tags: ["C#", "SELENIUM", "NUNIT", "RESTSHARP", ".NET", "GITHUB ACTIONS"],
+  fullDescription: "This project is a hybrid QA automation framework built to validate end-to-end user flows by combining UI and API testing. Using Selenium WebDriver for UI automation and RestSharp for API testing, the framework ensures deeper validation beyond traditional UI-only tests.\n\nI automated critical e-commerce workflows including login, product search, cart, and checkout using NUnit. The framework follows a modular and scalable design with separation of concerns (Test Layer, Page Objects, Utilities, API Clients), making it easy to maintain and extend.\n\nTo improve reliability and efficiency, I integrated UI and API validations within the same test flows, reducing dependency on flaky UI checks. This approach helped reduce manual testing effort by 60% and improved overall test coverage.\n\nAdditionally, I implemented CI/CD integration using GitHub Actions to automatically trigger regression test suites on each commit, reducing regression testing time by 50%.\n\nThe focus of this project was to build a production-like automation framework with real-world testing practices including reusable components, structured test design, and continuous integration.",
+  githubUrl: "https://github.com/shivaansh27/YOUR_AUTOMATION_REPO",
+  liveUrl: ""
+},
+  {
     id: "loopin",
     title: "LoopIn - Social Media Chat",
     description: "Real-time chat platform built for high-concurrency communication.",
