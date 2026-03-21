@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
@@ -117,7 +117,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover grayscale opacity-50 transition-opacity duration-500"
+            className="object-cover grayscale opacity-70 dark:opacity-50 transition-opacity duration-500"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
@@ -175,6 +175,17 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // #10: Dismiss modal on Escape key
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedProject(null);
+    };
+    if (selectedProject) {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProject]);
 
   const scrollLeft = () => {
     if (containerRef.current) {

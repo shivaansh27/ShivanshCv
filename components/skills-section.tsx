@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "motion/react";
@@ -39,11 +39,12 @@ export function SkillsSection() {
   };
 
   return (
-    <section id="stack" className="py-32 px-6">
+    <section id="stack" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-16 text-center">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4 text-center">
           / Technical Toolkit
         </h2>
+        <h3 className="text-5xl font-serif italic mb-16 text-center">Instruments of Choice</h3>
         <motion.div
           ref={containerRef}
           onMouseMove={handleMouseMove}

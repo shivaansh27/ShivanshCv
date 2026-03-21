@@ -11,7 +11,7 @@ const aiSkills = [
     icon: <Cloud className="w-8 h-8" />,
   },
   {
-    title: "Gemini API Integration",
+    title: "API Integration",
     description: "Production integrations with safe prompts, fallbacks, and strict error handling.",
     icon: <Sparkles className="w-8 h-8" />,
   },
@@ -27,7 +27,7 @@ export function AISection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-32 px-6 border-t border-border relative overflow-hidden">
+    <section className="py-24 px-6 border-t border-border relative overflow-hidden">
       {/* Subtle animated waveform behind cards */}
       <div className="absolute inset-0 pointer-events-none opacity-5 flex items-center justify-center gap-2">
         {Array.from({ length: 20 }).map((_, i) => (

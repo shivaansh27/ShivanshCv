@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "motion/react";
@@ -84,7 +84,7 @@ export function TimelineSection() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="timeline" className="py-32 px-6 border-t border-border relative">
+    <section id="timeline" className="py-24 px-6 border-t border-border relative">
       <div className="max-w-7xl mx-auto">
         <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-24 text-center">/ Journey</h2>
 
