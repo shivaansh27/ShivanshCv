@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CustomCursor } from "@/components/custom-cursor";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -85,16 +86,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans bg-background text-foreground selection:bg-foreground selection:text-background`}
-        suppressHydrationWarning
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
+      <body suppressHydrationWarning className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans bg-background text-foreground selection:bg-foreground selection:text-background antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <CustomCursor />
           {children}
         </ThemeProvider>
       </body>

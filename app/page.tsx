@@ -10,6 +10,7 @@ import { TimelineSection } from "@/components/timeline-section";
 import { BlogSection } from "@/components/blog-section";
 import { MobileNav } from "@/components/mobile-nav";
 import { MagneticButton } from "@/components/magnetic-button";
+import { Magnetic } from "@/components/magnetic";
 import { ArrowRight, ArrowUp, Github, Linkedin, Check, Download } from "lucide-react";
 import { motion, useScroll, useSpring, AnimatePresence, useMotionValueEvent } from "motion/react";
 
@@ -23,11 +24,33 @@ export default function Home() {
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px" }
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   // Show scroll-to-top after scrolling past 30%
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -73,33 +96,28 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <span className="font-mono text-sm tracking-tighter">S.SHARMA / 2026</span>
           <div className="hidden md:flex gap-8 text-xs font-mono uppercase tracking-widest text-muted-foreground">
-            <a href="#about" className="relative group hover:text-foreground transition-colors">
-              About
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all group-hover:w-full"></span>
-            </a>
-            <a href="#projects" className="relative group hover:text-foreground transition-colors">
-              Projects
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all group-hover:w-full"></span>
-            </a>
-            <a href="#stack" className="relative group hover:text-foreground transition-colors">
-              Stack
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all group-hover:w-full"></span>
-            </a>
-            <a href="#timeline" className="relative group hover:text-foreground transition-colors">
-              Timeline
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all group-hover:w-full"></span>
-            </a>
-            <a href="#blog" className="relative group hover:text-foreground transition-colors">
-              Blog
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all group-hover:w-full"></span>
-            </a>
-            <a href="#contact" className="relative group hover:text-foreground transition-colors">
-              Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all group-hover:w-full"></span>
-            </a>
+            {["about", "projects", "stack", "timeline", "blog", "contact"].map((section) => (
+              <Magnetic key={section}>
+                <a
+                  href={`#${section}`}
+                  className={`relative group transition-colors ${
+                    activeSection === section ? "text-foreground" : "hover:text-foreground"
+                  }`}
+                >
+                  {section}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-[1px] bg-foreground transition-all ${
+                      activeSection === section ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  ></span>
+                </a>
+              </Magnetic>
+            ))}
           </div>
           <div className="flex items-center gap-2">
-            <ThemeToggle />
+            <Magnetic>
+              <div><ThemeToggle /></div>
+            </Magnetic>
             <MobileNav />
           </div>
         </div>
@@ -183,12 +201,16 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <span className="font-mono text-xs uppercase text-muted-foreground w-24">Social</span>
                 <div className="flex gap-6">
-                  <a href="https://github.com/shivaansh27" target="_blank" rel="noopener noreferrer" className="hover:text-muted-foreground transition-colors" aria-label="GitHub">
-                    <Github className="w-6 h-6" />
-                  </a>
-                  <a href="https://linkedin.com/in/shivanshsharma27/" target="_blank" rel="noopener noreferrer" className="hover:text-muted-foreground transition-colors" aria-label="LinkedIn">
-                    <Linkedin className="w-6 h-6" />
-                  </a>
+                  <Magnetic>
+                    <a href="https://github.com/shivaansh27" target="_blank" rel="noopener noreferrer" className="hover:text-muted-foreground transition-colors flex p-2 -m-2" aria-label="GitHub">
+                      <Github className="w-6 h-6" />
+                    </a>
+                  </Magnetic>
+                  <Magnetic>
+                    <a href="https://linkedin.com/in/shivanshsharma27/" target="_blank" rel="noopener noreferrer" className="hover:text-muted-foreground transition-colors flex p-2 -m-2" aria-label="LinkedIn">
+                      <Linkedin className="w-6 h-6" />
+                    </a>
+                  </Magnetic>
                 </div>
               </div>
             </div>
