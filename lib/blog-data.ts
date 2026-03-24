@@ -14,19 +14,19 @@ export const blogPosts: BlogPost[] = [
     title: "How URL Shorteners Work: The System Design Behind TinyURL and Bitly",
     excerpt:
       "A deep dive into the system design, architecture, and algorithms behind URL shortening services like TinyURL and Bitly, exploring base62 encoding, database choices, and scaling strategies.",
-    date: "Mar 2024",
+    date: "Mar 2026",
     readTime: "8 min read",
     tags: ["SYSTEM DESIGN", "BACKEND", "ARCHITECTURE"],
     url: "https://sys-design12.hashnode.dev/how-url-shorteners-work-the-system-design-behind-tinyurl-and-bitly",
   },
   {
-    id: "ai-integration-production",
-    title: "Integrating AI into Real Products (Not Just Demos)",
+    id: "caching-explained-real-examples",
+    title: "Caching Explained with Real Examples: The Secret Behind Fast Systems",
     excerpt:
-      "Lessons learned shipping AI features with Gemini and OpenAI — structured prompts, fallback strategies, validation guardrails, and why 'it works in the playground' is never enough.",
-    date: "Feb 2026",
+      "A deep dive into caching strategies, including Cache-Aside, Write-Through, and Write-Back, explaining how real-world systems use Redis and CDNs to achieve high performance.",
+    date: "MAR 2026",
     readTime: "6 min read",
-    tags: ["AI", "GEMINI", "PRODUCTION"],
-    url: "https://github.com/shivaansh27",
+    tags: ["SYSTEM DESIGN", "CACHING", "REDIS"],
+    url: "https://sys-design12.hashnode.dev/caching-explained-with-real-examples-the-secret-behind-fast-systems",
   },
 ];
