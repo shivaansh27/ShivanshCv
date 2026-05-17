@@ -65,11 +65,8 @@
   z-index: 50;
 }
 
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
+
+
 
 body {
   color: var(--foreground);
