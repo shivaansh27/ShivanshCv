@@ -4,11 +4,9 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "motion/react";
 
 const timeline = [
-  { year: "Mar 2026 - Present", role: "Programmer Analyst Trainee", company: "Cognizant", description: "Currently undergoing intensive training in enterprise technologies and software development practices." },
-  { year: "Feb 2026", role: "SAP Certified Generative AI Developer", company: "SAP", description: "Completed enterprise-focused certification in Generative AI development and integration." },
-  { year: "Oct 2025", role: "Software Engineering Virtual Experience", company: "J.P. Morgan", description: "Built financial data modeling and visualization workflows with performance-focused engineering practices." },
-  { year: "Jul 2025", role: "Open Source Contributor", company: "GSSoC'25 & Hacktoberfest", description: "Contributed code and documentation across open-source projects, strengthening collaboration and delivery quality." },
-  { year: "2022 - Present", role: "B.Tech Computer Science & Engineering", company: "Lovely Professional University", description: "CGPA: 7.75. Ranked in the Top 10 of a college Web-A-Thon after delivering a SaaS product prototype." },
+  { year: "Aug 2026", role: "Systems Engineer", company: "TCS", description: "Starting as a Systems Engineer, focused on enterprise systems and software engineering." },
+  { year: "Mar 2026 - Jul 2026", role: "Programmer Analyst Trainee", company: "Cognizant", description: "Underwent intensive training in enterprise technologies and software development practices." },
+  { year: "2022 - Present", role: "B.Tech Computer Science & Engineering", company: "Lovely Professional University", description: "CGPA: 7.91. Ranked in the Top 10 of a college Web-A-Thon after delivering a SaaS product prototype." },
 ];
 
 function TimelineItem({ item, index }: { item: typeof timeline[0]; index: number }) {
