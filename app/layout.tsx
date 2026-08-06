@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import { MotionConfig } from "motion/react";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Shivansh Sharma Portfolio",
@@ -55,9 +57,13 @@ export const metadata: Metadata = {
     title: "Shivansh Sharma | Full Stack Developer & AI Enthusiast",
     description:
       "Full Stack & AI Engineer building scalable systems and intelligent applications.",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#000000",
 };
 
@@ -88,9 +94,9 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans bg-background text-foreground selection:bg-foreground selection:text-background antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-
-          {children}
+          <MotionConfig reducedMotion="user">{children}</MotionConfig>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

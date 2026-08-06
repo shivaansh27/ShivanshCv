@@ -27,7 +27,7 @@ function BlogCard({
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
       whileHover={{ y: -8 }}
-      className="blog-card group relative flex flex-col p-8 border-thin border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-foreground/50 dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+      className="blog-card group relative flex flex-col p-8 rounded-2xl overflow-hidden border-thin border-border bg-background/50 backdrop-blur-sm transition-all duration-300"
     >
       {/* Top row: date + read time */}
       <div className="flex items-center justify-between mb-6">
@@ -46,7 +46,7 @@ function BlogCard({
       </div>
 
       {/* Title */}
-      <h4 className="text-xl font-serif italic mb-4 leading-snug group-hover:text-foreground transition-colors">
+      <h4 className="text-xl font-serif italic mb-4 leading-snug group-hover:text-accent transition-colors">
         {post.title}
       </h4>
 
@@ -61,20 +61,20 @@ function BlogCard({
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="bg-muted border-thin border-border px-2.5 py-1 text-[9px] font-mono uppercase tracking-widest"
+              className="rounded-full bg-muted border-thin border-border px-2.5 py-1 text-[9px] font-mono uppercase tracking-widest"
             >
               {tag}
             </span>
           ))}
         </div>
         <div className="relative overflow-hidden w-8 h-8 flex items-center justify-center shrink-0">
-          <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </div>
       </div>
 
       {/* Animated bottom border */}
       <motion.div
-        className="absolute bottom-0 left-0 h-[2px] bg-foreground"
+        className="absolute bottom-0 left-0 h-[2px] bg-accent"
         initial={{ width: "0%" }}
         whileHover={{ width: "100%" }}
         transition={{ duration: 0.4, ease: "easeOut" }}
@@ -88,7 +88,7 @@ export function BlogSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="blog" className="py-24 px-6 border-t border-border relative">
+    <section id="blog" className="py-28 px-6 border-t border-border relative">
       {/* Faint diagonal lines texture */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.015] dark:opacity-[0.025]"

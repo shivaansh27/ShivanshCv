@@ -6,18 +6,18 @@ import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const skills = [
-  { name: "Node.js", details: "Async Programming - REST APIs", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", projects: ["LoopIn", "Battle Arena","Evalio"] },
-  { name: "Express.js", details: "Middleware - Routing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", projects: ["Flux Forms", "Battle Arena","Evalio"] },
-  { name: "MongoDB", details: "Schema Design - Indexing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg", projects: ["Battle Arena","Evalio"] },
-  { name: "TypeScript", details: "Strict typing - Scalable architecture", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", projects: ["General","Flux Form"] },
-  { name: "React.js", details: "Component-driven UI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", projects: ["LoopIn", "Flux Forms","Evalio"] },
-  { name: "PostgreSQL", details: "Relational data - SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", projects: ["Flux Forms"] },
-  { name: "Firebase", details: "WebSockets - Real-time", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg", projects: ["LoopIn"] },
-  { name: "Docker", details: "Containerization", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", projects: ["Flux Forms","Evalio"] },
-  { name: "C++", details: "High performance - Systems", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", projects: ["General","DSA"] },
-  { name: "C#", details: ".NET Framework", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg", projects: ["General",".NET"] },
-  { name: "Git", details: "Version Control - CI/CD", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", projects: ["General"] },
-  { name: "JWT & RBAC", details: "Authentication - Security", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg", projects: ["LoopIn", "Battle Arena", "Evalio"] },
+  { name: "Node.js", details: "Async Programming - REST APIs", icon: "/icons/nodejs.svg", projects: ["LoopIn", "Battle Arena","Evalio"] },
+  { name: "Express.js", details: "Middleware - Routing", icon: "/icons/express.svg", projects: ["Flux Forms", "Battle Arena","Evalio"] },
+  { name: "MongoDB", details: "Schema Design - Indexing", icon: "/icons/mongodb.svg", projects: ["Battle Arena","Evalio"] },
+  { name: "TypeScript", details: "Strict typing - Scalable architecture", icon: "/icons/typescript.svg", projects: ["General","Flux Form"] },
+  { name: "React.js", details: "Component-driven UI", icon: "/icons/react.svg", projects: ["LoopIn", "Flux Forms","Evalio"] },
+  { name: "PostgreSQL", details: "Relational data - SQL", icon: "/icons/postgresql.svg", projects: ["Flux Forms"] },
+  { name: "Firebase", details: "WebSockets - Real-time", icon: "/icons/firebase.svg", projects: ["LoopIn"] },
+  { name: "Docker", details: "Containerization", icon: "/icons/docker.svg", projects: ["Flux Forms","Evalio"] },
+  { name: "C++", details: "High performance - Systems", icon: "/icons/cplusplus.svg", projects: ["General","DSA"] },
+  { name: "C#", details: ".NET Framework", icon: "/icons/csharp.svg", projects: ["General",".NET"] },
+  { name: "Git", details: "Version Control - CI/CD", icon: "/icons/git.svg", projects: ["General"] },
+  { name: "JWT & RBAC", details: "Authentication - Security", icon: "/icons/json.svg", projects: ["LoopIn", "Battle Arena", "Evalio"] },
 ];
 
 export function SkillsSection() {
@@ -39,7 +39,7 @@ export function SkillsSection() {
   };
 
   return (
-    <section id="stack" className="py-24 px-6">
+    <section id="stack" className="py-28 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4 text-center">
           / Technical Toolkit
@@ -61,6 +61,15 @@ export function SkillsSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.6, delay: index * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
                 onClick={() => setExpandedSkill(isExpanded ? null : skill.name)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setExpandedSkill(isExpanded ? null : skill.name);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isExpanded}
                 className={`skill-card group/card relative overflow-hidden rounded-2xl border border-border bg-background p-8 transition-all duration-300 flex flex-col justify-start cursor-pointer ${isExpanded ? "col-span-1 sm:col-span-2 lg:col-span-2 row-span-2" : "min-h-[200px]"}`}
               >
                 <svg className="absolute inset-0 w-full h-full pointer-events-none rounded-2xl" xmlns="http://www.w3.org/2000/svg">
@@ -130,7 +139,7 @@ export function SkillsSection() {
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {skill.projects.map((project) => (
-                            <span key={project} className="bg-muted border-thin border-border px-3 py-1.5 text-xs font-mono rounded-sm">
+                            <span key={project} className="bg-muted border-thin border-border px-3 py-1.5 text-xs font-mono rounded-full">
                               {project}
                             </span>
                           ))}

@@ -9,6 +9,7 @@ const navLinks = [
   { href: "#projects", label: "Projects" },
   { href: "#stack", label: "Stack" },
   { href: "#timeline", label: "Timeline" },
+  { href: "#achievements", label: "Achievements" },
   { href: "#blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
 ];
@@ -41,7 +42,7 @@ export function MobileNav() {
     <div className="md:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 hover:bg-muted transition-colors relative z-[60]"
+        className="p-2 rounded-full hover:bg-muted transition-colors relative z-[60]"
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -66,7 +67,7 @@ export function MobileNav() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-72 bg-background border-l border-border z-[55] flex flex-col justify-center px-10"
+              className="fixed top-0 right-0 h-full w-72 bg-background border-l border-border rounded-l-3xl z-[55] flex flex-col justify-center px-10"
             >
               <ul className="space-y-8">
                 {navLinks.map((link, index) => (
@@ -79,7 +80,7 @@ export function MobileNav() {
                     <a
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="font-mono text-sm uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors block py-2"
+                      className="font-mono text-sm uppercase tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors block py-2"
                     >
                       {link.label}
                     </a>

@@ -27,26 +27,9 @@ export function AISection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-6 border-t border-border relative overflow-hidden">
-      {/* Subtle animated waveform behind cards */}
-      <div className="absolute inset-0 pointer-events-none opacity-5 flex items-center justify-center gap-2">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="w-1 bg-foreground rounded-full"
-            animate={{ height: ["10px", "100px", "10px"] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.1,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-
+    <section className="py-28 px-6 border-t border-border relative overflow-hidden">
       {/* Very faint moving grid */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 pointer-events-none opacity-[0.02] dark:opacity-[0.03]"
         style={{
           backgroundImage: "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
@@ -74,10 +57,10 @@ export function AISection() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.6, delay: index * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
                 whileHover={{ y: -5 }}
-                className="group relative p-8 border-thin border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-foreground/50 dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                className="group relative p-8 rounded-2xl border-thin border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-accent/60"
               >
                 <div className="flex items-start gap-6">
-                  <div className="text-foreground/80 group-hover:text-foreground transition-colors">{skill.icon}</div>
+                  <div className="text-accent transition-colors">{skill.icon}</div>
                   <div>
                     <h4 className="font-mono text-lg mb-2">{skill.title}</h4>
                     <p className="text-muted-foreground font-light">{skill.description}</p>

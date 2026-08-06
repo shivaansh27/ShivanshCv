@@ -19,11 +19,11 @@ function TimelineItem({ item, index }: { item: typeof timeline[0]; index: number
   return (
     <div ref={ref} className="relative flex flex-col md:flex-row items-start md:items-center justify-between w-full mb-24 last:mb-0 pl-12 md:pl-0">
       <motion.div
-        className="absolute left-[0px] md:left-1/2 top-2 md:top-1/2 w-4 h-4 rounded-full bg-background border-2 border-foreground z-10 -translate-x-1/2 md:-translate-y-1/2"
+        className="absolute left-[0px] md:left-1/2 top-2 md:top-1/2 w-4 h-4 rounded-full bg-background border-2 border-accent z-10 -translate-x-1/2 md:-translate-y-1/2"
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : { scale: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
-        whileInView={{ boxShadow: "0 0 15px var(--foreground)" }}
+        whileInView={{ boxShadow: "0 0 15px var(--accent)" }}
       />
 
       <div className={`hidden md:block w-5/12 ${isEven ? "text-right pr-12" : "invisible"}`}>
@@ -85,7 +85,7 @@ export function TimelineSection() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="timeline" className="py-24 px-6 border-t border-border relative">
+    <section id="timeline" className="py-28 px-6 border-t border-border relative">
       <div className="max-w-7xl mx-auto">
         <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-24 text-center">/ Journey</h2>
 
@@ -93,7 +93,7 @@ export function TimelineSection() {
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
 
           <motion.div
-            className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-foreground -translate-x-1/2 origin-top"
+            className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-accent -translate-x-1/2 origin-top"
             style={{ scaleY }}
           />
 

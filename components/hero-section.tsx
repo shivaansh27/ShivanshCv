@@ -108,7 +108,7 @@ export function HeroSection() {
         animate={{ y: "-50%" }}
         transition={{ repeat: Infinity, duration: 100, ease: "linear" }}
       >
-        <pre className="font-mono text-[10px] leading-relaxed whitespace-pre text-foreground">
+        <pre aria-hidden="true" className="font-mono text-[10px] leading-relaxed whitespace-pre text-foreground">
           {codeSnippet.repeat(10)}
         </pre>
       </motion.div>
@@ -144,7 +144,7 @@ export function HeroSection() {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1.5, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -bottom-4 left-0 h-[1px] bg-foreground origin-left w-full md:w-auto md:right-0"
+            className="absolute -bottom-4 left-0 h-[2px] bg-accent origin-left w-full md:w-auto md:right-0"
           />
         </div>
 
@@ -163,10 +163,10 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 1.4 }}
             className="flex flex-col sm:flex-row gap-4 w-full md:w-auto"
           >
-            <a href="#projects" className="border-thin border-foreground px-8 py-4 text-sm font-mono uppercase tracking-widest text-center hover:bg-foreground hover:text-background transition-all active:scale-95">
+            <a href="#projects" className="rounded-full border-thin border-foreground px-8 py-4 text-sm font-mono uppercase tracking-widest text-center hover:bg-foreground hover:text-background transition-all active:scale-95">
               View Projects
             </a>
-            <a href="#contact" className="bg-foreground text-background px-8 py-4 text-sm font-mono uppercase tracking-widest text-center hover:bg-background hover:text-foreground border-thin border-foreground transition-all active:scale-95">
+            <a href="#contact" className="rounded-full bg-accent text-accent-foreground px-8 py-4 text-sm font-mono uppercase tracking-widest text-center hover:opacity-90 transition-all active:scale-95">
               Let&apos;s Talk
             </a>
           </motion.div>

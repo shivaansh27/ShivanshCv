@@ -19,8 +19,8 @@ type Project = {
 const projects: Project[] = [
   {
     id: "evalio",
-    title: "Evalio - Ai Mock Interview Platform",
-    description: " AI-powered mock interview platform that generates personalized interview questions based on a user’s resume and target role",
+    title: "Evalio - AI Mock Interview Platform",
+    description: "AI-powered mock interview platform that generates personalized interview questions based on a user’s resume and target role",
     image: "/Evalio.png",
     tags: ["NODE.JS", "EXPRESS", "MONGODB", "REACT","JWT","OPENAI","DEEPGRAM"],
     fullDescription: "Evalio is a full-stack mock interview platform that helps job seekers practice technical and behavioral interviews in a structured and realistic way. Users can upload their resume, select a target job role and experience level, and generate personalized interview sessions powered by AI. The platform supports voice-based responses and provides detailed performance reports with question-wise scoring, feedback insights, and interview history tracking. Built using React, Node.js, Express, and MongoDB, Evalio follows a clean Route → Controller → Service architecture with secure JWT-based authentication, Google OAuth integration, file validation, and rate-limited endpoints. The focus was on building a scalable backend, structured workflows, and practical AI integration within a real-world application.",
@@ -105,9 +105,18 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${project.title}`}
       className="min-w-[320px] md:min-w-[500px] snap-start group cursor-pointer relative"
     >
-      <div className="aspect-video bg-muted border-thin border-border overflow-hidden mb-6 relative rounded-sm">
+      <div className="aspect-video bg-muted border-thin border-border overflow-hidden mb-6 relative rounded-2xl">
         <motion.div
           className="w-full h-full relative"
           whileHover={{ scale: 1.05 }}
@@ -117,6 +126,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
             src={project.image}
             alt={project.title}
             fill
+            sizes="(min-width: 768px) 500px, 320px"
             className="object-cover grayscale opacity-70 dark:opacity-50 transition-opacity duration-500"
             referrerPolicy="no-referrer"
           />
@@ -125,14 +135,16 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 
         <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
           <motion.rect
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
+            x="1"
+            y="1"
+            width="calc(100% - 2px)"
+            height="calc(100% - 2px)"
+            rx="16"
+            ry="16"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className="text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             initial={{ pathLength: 0 }}
             whileHover={{ pathLength: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -141,7 +153,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 
         <div className="absolute bottom-6 left-6 flex gap-2" style={{ transform: "translateZ(20px)" }}>
           {project.tags.map((tag) => (
-            <span key={tag} className="bg-background/10 backdrop-blur-md border-thin border-border px-3 py-1 text-[10px] font-mono text-white">
+            <span key={tag} className="rounded-full bg-background/10 backdrop-blur-md border-thin border-border px-3 py-1 text-[10px] font-mono text-white">
               {tag}
             </span>
           ))}
@@ -163,7 +175,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           whileHover={{ height: "auto", opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <span className="text-xs font-mono uppercase tracking-widest border-b border-foreground pb-1 inline-block">
+          <span className="text-xs font-mono uppercase tracking-widest text-accent border-b border-accent pb-1 inline-block">
             Study Case
           </span>
         </motion.div>
@@ -200,17 +212,17 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-32 border-t border-border relative z-20">
+    <section id="projects" className="py-28 border-t border-border relative z-20">
       <div className="max-w-7xl mx-auto px-6 mb-16 flex justify-between items-end">
         <div>
           <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">/ Work</h2>
           <h3 className="text-5xl font-serif italic">Selected Artifacts</h3>
         </div>
         <div className="hidden md:flex gap-2">
-          <button onClick={scrollLeft} className="p-2 border-thin border-border hover:bg-foreground hover:text-background transition-colors active:scale-95">
+          <button onClick={scrollLeft} className="p-2 rounded-full border-thin border-border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors active:scale-95">
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={scrollRight} className="p-2 border-thin border-border hover:bg-foreground hover:text-background transition-colors active:scale-95">
+          <button onClick={scrollRight} className="p-2 rounded-full border-thin border-border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors active:scale-95">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
@@ -248,6 +260,7 @@ export function ProjectsSection() {
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   fill
+                  sizes="100vw"
                   className="object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -261,7 +274,7 @@ export function ProjectsSection() {
               <div className="p-8 md:p-16 max-w-4xl mx-auto">
                 <div className="flex gap-2 mb-6">
                   {selectedProject.tags.map((tag) => (
-                    <span key={tag} className="bg-muted border-thin border-border px-3 py-1 text-xs font-mono">
+                    <span key={tag} className="rounded-full bg-muted border-thin border-border px-3 py-1 text-xs font-mono">
                       {tag}
                     </span>
                   ))}
@@ -274,7 +287,7 @@ export function ProjectsSection() {
                         href={selectedProject.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 border-thin border-border hover:bg-foreground hover:text-background transition-colors font-mono text-xs uppercase tracking-widest"
+                        className="flex items-center gap-2 rounded-full px-4 py-2 border-thin border-border hover:bg-foreground hover:text-background transition-colors font-mono text-xs uppercase tracking-widest"
                       >
                         <Github className="w-4 h-4" />
                         Code
@@ -285,7 +298,7 @@ export function ProjectsSection() {
                         href={selectedProject.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-foreground text-background border-thin border-foreground hover:bg-background hover:text-foreground transition-colors font-mono text-xs uppercase tracking-widest"
+                        className="flex items-center gap-2 rounded-full px-4 py-2 bg-accent text-accent-foreground hover:opacity-90 transition-opacity font-mono text-xs uppercase tracking-widest"
                       >
                         <ExternalLink className="w-4 h-4" />
                         Live
